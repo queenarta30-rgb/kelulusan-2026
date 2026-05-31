@@ -359,9 +359,12 @@ launchConfetti();
 
 }catch(error){
 
+console.error(error);
+
 result.innerHTML=`
-<div class="glass rounded-3xl p-8 text-center">
-Terjadi kesalahan saat mengambil data.
+<div class="glass rounded-3xl p-8 text-center text-red-300">
+<b>Error:</b><br>
+${error.message}
 </div>
 `;
 
