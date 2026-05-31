@@ -239,8 +239,6 @@ await fetch(`${API_URL}?nisn=${nisn}`);
 
 const data = await response.json();
 
-console.log(data);
-alert(JSON.stringify(data));
 
 if(data.status !== "success"){
 
@@ -337,18 +335,20 @@ ${siswa.pesan}
 
 </div>
 
+${siswa.link_skl ? `
 <div class="mt-8 text-center">
-
-<a
-href="${siswa.link_skl || '#'}"
-target="_blank"
-class="gold inline-block px-8 py-3 rounded-xl text-black font-bold">
-
-Unduh SKL
-
-</a>
-
+  <a
+    href="${siswa.link_skl}"
+    target="_blank"
+    class="gold inline-block px-8 py-3 rounded-xl text-black font-bold">
+    Unduh SKL
+  </a>
 </div>
+` : `
+<div class="mt-8 text-center text-yellow-200">
+  SKL belum tersedia.
+</div>
+`}
 
 </div>
 `;
