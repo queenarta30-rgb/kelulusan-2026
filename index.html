@@ -237,10 +237,12 @@ try{
 const response =
 await fetch(`${API_URL}?nisn=${nisn}`);
 
-const data =
-await response.json();
+const data = await response.json();
 
-if(!data.success){
+console.log(data);
+alert(JSON.stringify(data));
+
+if(data.status !== "success"){
 
 result.innerHTML=`
 <div class="glass rounded-3xl p-8 text-center">
@@ -251,10 +253,10 @@ Data tidak ditemukan.
 return;
 }
 
-const siswa = data.data;
+const siswa = data;
 
 let badgeColor =
-siswa.status === "LULUS"
+siswa.status_kelulusan === "LULUS"
 ? "bg-green-500"
 : "bg-red-500";
 
@@ -269,7 +271,7 @@ Hasil Kelulusan
 </h3>
 
 <div class="${badgeColor} inline-block px-6 py-3 rounded-full text-xl font-bold">
-${siswa.status}
+${siswa.status_kelulusan}
 </div>
 
 </div>
@@ -317,7 +319,7 @@ ${siswa.ttl}
 Nomor SKL
 </label>
 <div class="font-semibold">
-${siswa.nomor_skl}
+${siswa.no_skl}
 </div>
 </div>
 
@@ -338,7 +340,7 @@ ${siswa.pesan}
 <div class="mt-8 text-center">
 
 <a
-href="${siswa.skl || '#'}"
+href="${siswa.link_skl || '#'}"
 target="_blank"
 class="gold inline-block px-8 py-3 rounded-xl text-black font-bold">
 
@@ -351,7 +353,7 @@ Unduh SKL
 </div>
 `;
 
-if(siswa.status.toUpperCase()==="LULUS"){
+if(siswa.status_kelulusan.toUpperCase()==="LULUS"){
 launchConfetti();
 }
 
