@@ -335,22 +335,35 @@ ${siswa.pesan}
 
 </div>
 
-${siswa.link_skl ? `
-<div class="mt-8 text-center">
+<div class="mt-8 flex flex-col md:flex-row justify-center gap-4">
+
+  ${siswa.link_skl ? `
   <a
     href="${siswa.link_skl}"
     target="_blank"
-    class="gold inline-block px-8 py-3 rounded-xl text-black font-bold">
-    Unduh SKL
+    class="gold inline-block px-8 py-3 rounded-xl text-black font-bold text-center">
+    📄 Unduh SKL
   </a>
-</div>
-` : `
-<div class="mt-8 text-center">
-  <div class="bg-yellow-500 inline-block px-6 py-3 rounded-full text-lg font-bold text-white">
+  ` : `
+  <div class="bg-yellow-500 inline-block px-6 py-3 rounded-xl text-lg font-bold text-white text-center">
     SKL BELUM TERSEDIA
   </div>
+  `}
+
+  ${siswa.link_sk_kepsek ? `
+  <a
+    href="${siswa.link_sk_kepsek}"
+    target="_blank"
+    class="bg-green-500 hover:bg-green-600 inline-block px-8 py-3 rounded-xl text-white font-bold text-center transition">
+    🏫 Unduh SK Kepala Sekolah
+  </a>
+  ` : `
+  <div class="bg-gray-500 inline-block px-6 py-3 rounded-xl text-lg font-bold text-white text-center">
+    SK KEPSEK BELUM TERSEDIA
+  </div>
+  `}
+
 </div>
-`}
 </div>
 `;
 
